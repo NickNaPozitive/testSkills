@@ -22,19 +22,23 @@ public class FirstTest {
 
     @BeforeTest
     public void start() throws Exception {
+
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(false);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
 
     @AfterTest
     public void closeSeleniumSession() {
+
         driver.close();
         driver.quit();
+
     }
 
     @Test
@@ -47,13 +51,18 @@ public class FirstTest {
         searchBox.submit();
 
         takeSceenshot();
+
     }
 
     private void takeSceenshot() throws Exception {
+
         TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
+
         FileUtils.copyFile(source, new File("./screenshot.png"));
+
         System.out.println("The Screenshot is taken...");
+
     }
 
 }
