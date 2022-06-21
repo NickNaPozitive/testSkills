@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class FirstTest {
-    String SITE_URL = "https://www.youtube.com/";
+    static String SITE_URL = "https://www.youtube.com/";
     public WebDriver driver;
     public WebElement searchBox;
 
@@ -36,7 +37,6 @@ public class FirstTest {
     @AfterTest
     public void closeSeleniumSession() {
 
-        driver.close();
         driver.quit();
 
     }
@@ -44,11 +44,25 @@ public class FirstTest {
     @Test
     public void testSearchGoogle() throws Exception{
 
-        driver.get(SITE_URL);
+//        driver.get(SITE_URL);
 
-        searchBox = driver.findElement(By.name("search_query"));
-        searchBox.sendKeys("GUZNO");
-        searchBox.submit();
+//        String currentURL = driver.getCurrentUrl();
+//        System.out.println("currentURL ---> " + currentURL);
+//        Assert.assertEquals(currentURL, "https://www.google.com/");
+
+//        searchBox = driver.findElement(By.name("search_query"));
+//        searchBox.sendKeys("GUZNO");
+//
+//        searchBox.submit();
+        driver.get("https://skills.etm.ru");
+//        driver.get("https://github.com/NickNaPozitive");
+        Cookie authCookie = new Cookie("session-id", "018400253801541876801567042672");
+        driver.manage().addCookie(authCookie);
+        driver.navigate().refresh();
+        Thread.sleep(5000);
+
+
+
 
         takeSceenshot();
 
@@ -61,7 +75,7 @@ public class FirstTest {
 
         FileUtils.copyFile(source, new File("./screenshot.png"));
 
-        System.out.println("The Screenshot is taken...");
+        System.out.println("The S creenshot is taken...");
 
     }
 
