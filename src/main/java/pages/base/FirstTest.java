@@ -1,3 +1,5 @@
+package pages.base;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.commons.io.FileUtils;
@@ -6,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -13,10 +17,14 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import static java.time.Duration.ofSeconds;
+
 public class FirstTest {
-    static String SITE_URL = "https://www.youtube.com/";
+    static String SITE_URL = "https://skills.etm.ru";
+    Cookie authCookie = new Cookie("session-id", "018400253801541876801567042672");
     public WebDriver driver;
     public WebElement searchBox;
 
@@ -28,8 +36,8 @@ public class FirstTest {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(false);
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
@@ -44,25 +52,11 @@ public class FirstTest {
     @Test
     public void testSearchGoogle() throws Exception{
 
-//        driver.get(SITE_URL);
+        driver.get(SITE_URL);
 
-//        String currentURL = driver.getCurrentUrl();
-//        System.out.println("currentURL ---> " + currentURL);
-//        Assert.assertEquals(currentURL, "https://www.google.com/");
-
-//        searchBox = driver.findElement(By.name("search_query"));
-//        searchBox.sendKeys("GUZNO");
-//
-//        searchBox.submit();
-        driver.get("https://skills.etm.ru");
-//        driver.get("https://github.com/NickNaPozitive");
-        Cookie authCookie = new Cookie("session-id", "018400253801541876801567042672");
         driver.manage().addCookie(authCookie);
         driver.navigate().refresh();
-        Thread.sleep(5000);
-
-
-
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         takeSceenshot();
 
