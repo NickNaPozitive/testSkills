@@ -8,6 +8,7 @@ public class Constant {
     }
     public static class Urls{
         public static final String AUTH_PAGE= "https://skills.etm.ru/";
+        public static final String FUTURE_EVENTS_PAGE= "https://skills.etm.ru/events/";
 //        public static final String AUTH_PAGE= "https://www.google.com/";
     }
 }

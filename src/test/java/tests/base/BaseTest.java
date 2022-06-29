@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.TestInstance;
 import pages.auth.AuthorizationPage;
 import pages.base.BasePage;
+import pages.events.FutureEventsPage;
 
 import static common.Config.CLEAR_COOKIES;
 import static common.Config.HOLD_BROWSER_OPEN;
@@ -20,6 +21,8 @@ public class BaseTest {
     protected WebDriver driver = CommonActions.createDriver();
     protected BasePage basePage = new BasePage(driver);
     protected AuthorizationPage authorizationPage = new AuthorizationPage(driver);
+
+    protected FutureEventsPage futureEventsPage = new FutureEventsPage(driver);
 
     @AfterMethod
     public void clearCookiesAndLocalStorage(){

@@ -9,7 +9,7 @@ public class AuthorizationPage extends BasePage {
     public AuthorizationPage(WebDriver driver) {
         super(driver);
     }
-    private final By buttonAuth = By.xpath("//*[@id=\"__next\"]/div/header/div/div[3]/div[1]/button");
+    private final By buttonAuth = By.xpath("//*[@id=\"__next\"]/div/header/div/div[3]/div[2]/button");
 
     public AuthorizationPage clickToAuth(){
         driver.findElement(buttonAuth).click();
