@@ -7,7 +7,7 @@ public class Constant {
         public static final int EXPLICIT_WAIT = 10;
     }
     public static class Urls{
-//        public static final String AUTH_PAGE= "https://skills.etm.ru/";
-        public static final String AUTH_PAGE= "https://www.google.com/";
+        public static final String AUTH_PAGE= "https://skills.etm.ru/";
+//        public static final String AUTH_PAGE= "https://www.google.com/";
     }
 }

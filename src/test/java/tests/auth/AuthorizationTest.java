@@ -11,6 +11,6 @@ public class AuthorizationTest extends BaseTest {
     public void checkIsRedirectToAuth(){
         basePage.goToUrl(AUTH_PAGE);
         authorizationPage.clickToAuth();
-
+        basePage.isAuthWindowPresented();
     }
 }

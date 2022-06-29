@@ -1,5 +1,6 @@
 package pages.base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -16,6 +17,8 @@ public class BasePage {
         this.driver = driver;
     }
 
+    private final By cityChange = By.xpath("//*[@id=\"__next\"]/div/header/div/div[3]/div[1]/div/div/div");
+
     /*
     * Метод для открытия определеннго URL
     * */
@@ -29,5 +32,10 @@ public class BasePage {
     public WebElement waitElementIsVisible(WebElement element){
         new WebDriverWait(driver, EXPLICIT_WAIT).until(ExpectedConditions.visibilityOf(element));
         return element;
+    }
+
+    public void isAuthWindowPresented(){
+        WebElement listOfCities = driver.findElement(cityChange);
+        waitElementIsVisible(listOfCities);
     }
 }

@@ -1,7 +1,9 @@
 package common;
 
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -20,8 +22,8 @@ public class CommonActions extends Assert {
                 driver = new ChromeDriver();
                 break;
             case "MOZILLA":
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-                driver = new ChromeDriver();
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
+                driver = new FirefoxDriver();
                 break;
             default:
                 assertEquals(BROWSER_AND_PLATFORM, "qwe", "hello");
